@@ -56,9 +56,9 @@ public final class Transformers {
     public static <I, O> List<O> transform(final Iterable<I> base, final Function<I, O> transformer) {
         return flattenTransform(base, new Function<I, Collection<O>>(){
             public Collection<O> call(I input){
-                final Collection<O> ris = new ArrayList<>();
-                ris.add(transformer.call(input));
-                return ris;
+                final Collection<O> res = new ArrayList<>();
+                res.add(transformer.call(input));
+                return res;
             }
         });
     }
@@ -99,11 +99,11 @@ public final class Transformers {
     public static <I> List<I> select(final Iterable<I> base, final Function<I, Boolean> test) {
         return flattenTransform(base, new Function<I,Collection<I>>(){
             public Collection<I> call(I input){
-                final List<I> ris = new ArrayList<>();
+                final List<I> res = new ArrayList<>();
                 if(test.call(input)){
-                    ris.add(input);
+                    res.add(input);
                 }
-                return ris;
+                return res;
             }
         });
     }

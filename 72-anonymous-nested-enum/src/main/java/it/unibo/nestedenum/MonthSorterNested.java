@@ -10,7 +10,7 @@ public final class MonthSorterNested implements MonthSorter {
     private static final int NORMAL = 30;
     private static final int SHORT = 28;
 
-    public enum Mesi{
+    public enum Month{
         JANUARY("January"),
         FEBRUARY("February"),
         MARCH("March"),
@@ -24,49 +24,49 @@ public final class MonthSorterNested implements MonthSorter {
         NOVEMBER("November"),
         DECEMBER("December");
 
-        private final String nome;
-        private final int giorni;
+        private final String name;
+        private final int days;
 
-        Mesi(String nome){
-            this.nome=nome;
-            switch(nome){
-                case "February" : this.giorni = SHORT; break;
-                case "November" : this.giorni = NORMAL; break;
-                case "April" : this.giorni = NORMAL; break;
-                case "June" : this.giorni = NORMAL; break;
-                case "September" : this.giorni = NORMAL; break;
-                default :this.giorni = LONG;
+        Month(String name){
+            this.name = name;
+            switch(name) {
+                case "February" : this.days = SHORT; break;
+                case "November" : this.days = NORMAL; break;
+                case "April" : this.days = NORMAL; break;
+                case "June" : this.days = NORMAL; break;
+                case "September" : this.days = NORMAL; break;
+                default : this.days = LONG;
             }
         }
 
         public String getName(){
-            return this.nome;
+            return this.name;
         }
 
         public int getDays(){
-            return this.giorni;
+            return this.days;
         }
         
-        public static Mesi fromString(String stringa){
-            if(stringa == null){
-                throw new NullPointerException("La stringa inserita non è valida");
+        public static Month fromString(String string){
+            if(string == null){
+                throw new NullPointerException("The inserted string is not valid");
             }
             int i = 0;
-            Mesi ris = null;
-            for (Mesi selezione : Mesi.values()){
-                if(selezione.getName().equalsIgnoreCase(stringa) || 
-                selezione.getName().toLowerCase().startsWith(stringa.toLowerCase())){
+            Month res = null;
+            for (Month selection : Month.values()){
+                if(selection.getName().equalsIgnoreCase(string) || 
+                selection.getName().toLowerCase().startsWith(string.toLowerCase())){
                     i++;
-                    if(i>1){
-                        throw new IllegalArgumentException("Il mese inserito è ambiguo");
+                    if(i > 1){
+                        throw new IllegalArgumentException("The inserted month is ambiguous");
                     }
-                    ris = selezione;
+                    res = selection;
                 }
             }
-            if(ris == null){
-                throw new IllegalArgumentException("Non esiste il mese inserito");
+            if(res == null){
+                throw new IllegalArgumentException("The inserted month does not exist");
             }
-            return ris;
+            return res;
         }
     }
 
@@ -77,7 +77,7 @@ public final class MonthSorterNested implements MonthSorter {
             } else {
                 return -1;
             }
-        } else if(b==null){
+        } else if(b == null){
             return 1;
         } else {
             return 2;
@@ -88,10 +88,10 @@ public final class MonthSorterNested implements MonthSorter {
     public Comparator<String> sortByDays() {
         return new Comparator<String>(){
             public int compare(String a, String b){
-                if(nullControl(a , b) == 2){
-                    Mesi meseA = Mesi.fromString(a);
-                    Mesi meseB = Mesi.fromString(b);
-                    return Integer.compare(meseA.getDays(),meseB.getDays());
+                if(nullControl(a, b) == 2){
+                    Month A = Month.fromString(a);
+                    Month B = Month.fromString(b);
+                    return Integer.compare(A.getDays(), B.getDays());
                 } else {
                     return nullControl(a, b);
                 }
@@ -104,9 +104,9 @@ public final class MonthSorterNested implements MonthSorter {
         return new Comparator<String>(){
             public int compare(String a, String b){
                 if(nullControl(a , b) == 2){
-                    Mesi meseA = Mesi.fromString(a);
-                    Mesi meseB = Mesi.fromString(b);
-                    return Integer.compare(meseA.ordinal(),meseB.ordinal());
+                    Month A = Month.fromString(a);
+                    Month B = Month.fromString(b);
+                    return Integer.compare(A.ordinal(), B.ordinal());
                 } else {
                     return nullControl(a, b);
                 }
@@ -117,9 +117,9 @@ public final class MonthSorterNested implements MonthSorter {
     public static class SortByMonthOrder implements Comparator<String>{
         public int compare(String a, String b){
             if(nullControl(a , b) == 2){
-                Mesi meseA = Mesi.fromString(a);
-                Mesi meseB = Mesi.fromString(b);
-                return Integer.compare(meseA.ordinal(),meseB.ordinal());
+                Month A = Month.fromString(a);
+                Month B = Month.fromString(b);
+                return Integer.compare(A.ordinal(), B.ordinal());
             } else {
                 return nullControl(a, b);
             }
@@ -129,9 +129,9 @@ public final class MonthSorterNested implements MonthSorter {
     public static class SortByDate implements Comparator<String>{
         public int compare(String a, String b){
             if(nullControl(a , b) == 2){
-                Mesi meseA = Mesi.fromString(a);
-                Mesi meseB = Mesi.fromString(b);
-                return Integer.compare(meseA.getDays(),meseB.getDays());
+                Month A = Month.fromString(a);
+                Month B= Month.fromString(b);
+                return Integer.compare(A.getDays(), B.getDays());
             } else {
                 return nullControl(a, b);
             }
