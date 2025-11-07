@@ -18,9 +18,9 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T>{
 
     public IterableWithPolicyImpl(final T[] array, final Predicate<T> filter){
         if(array == null){
-            throw new NullPointerException("L'array non contiene elementi");
+            throw new NullPointerException("The array does not contain elements");
         } else if (filter == null){
-            throw new NullPointerException("Il filtro è nullo");
+            throw new NullPointerException("The filter is null");
         }
         this.array = array;
         this.filter = filter;
@@ -59,7 +59,7 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T>{
                 index=nextIndex;
                 return array[index];
             } else {
-                throw new UnsupportedOperationException("Il prossimo elemento non esiste");
+                throw new UnsupportedOperationException("The next element does not exist");
             }
         }
     }
