@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.unibo.functional.TestFunctionalLibrary" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-11-07T13:45:08.426Z" hostname="BIANCOZZ" time="0.07">
+<testsuite name="it.unibo.functional.TestFunctionalLibrary" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-11-08T10:47:15.932Z" hostname="BIANCOZZ" time="0.115">
   <properties/>
-  <testcase name="testFlatten()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.057"/>
-  <testcase name="testSelectAndReject()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.008"/>
-  <testcase name="testTransform()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.003"/>
+  <testcase name="testFlatten()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.095"/>
+  <testcase name="testSelectAndReject()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.013"/>
+  <testcase name="testTransform()" classname="it.unibo.functional.TestFunctionalLibrary" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
